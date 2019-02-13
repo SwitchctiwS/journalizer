@@ -20,7 +20,7 @@ Description:
     Each entry is a text document with the name yyyy-mm-dd.txt (e.g. 1996-11-29.txt)
 
 <TODO>
-    - make way to view entries
+    - Have things display in proper order!
     - set up proper execptions
     - expecially when looking at the config_file configparser
 </TODO>
@@ -37,7 +37,7 @@ import configparser
 
 
 # Defines
-VERSION = "1.1"
+VERSION = "1.2"
 CONFIG_FILE_TEXT = "# IMPORTANT NOTES\n" \
                    "# NOTE 1: This config file is supposed to be located at $HOME/.config/journalizer/config.ini\n" \
                    "# NOTE 2: ~ expansion does not work!\n" \
@@ -121,6 +121,9 @@ def list_paths(directory, path_type):
     except OSError as error:
         print(error)
         sys.exit("Could not acccess directory!")
+
+    # Need to sort() because listdir() is in arbitrary order
+    paths.sort()
 
     # Iterates through all paths and finds dirs/files
     path_count = 0
