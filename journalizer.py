@@ -123,7 +123,7 @@ def list_paths(directory, path_type):
         sys.exit("Could not acccess directory!")
 
     # Need to sort() because listdir() is in arbitrary order
-    paths.sort()
+    paths.sort(key=str.lower)
 
     # Iterates through all paths and finds dirs/files
     path_count = 0
